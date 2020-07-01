@@ -1,0 +1,282 @@
+<html>
+<head>
+<title>GPA_Calculator</title>
+<link href="admin.css" type="text/css" rel="stylesheet">
+<link href="gpacalculator.css" type="text/css" rel="stylesheet">
+</head>
+<body class="body">
+<div class="menubar">
+<ul>
+<li><a href="user.html">Home</a></li>
+<li><a href="gpacalculator.html" style="color:orange;">GPA Calculator</a></li>
+<li><a href="cgpacalculator.html">CGPA Calculator</a></li>
+<li><a href="js.html">Logout</a></li>
+</ul>
+</div>
+<div class="main_page">
+<div class="wel_content" style="margin-left:150px;">GPA Calculator</div>
+<div class="wel_content" style="margin-left:150px;font-size:30px;
+magin:0px 0px 0px;">Enter the number of subjects:</div>
+
+<input name="count" type="number" id="count1" oninput="f2()" required style="height:30px;width:200px;
+margin:5px 0px 0px 150px;">
+<input name="ok" type="submit" value="Okay" id="ok1" onclick="f1()" style="height:28px;width:70px;background-color:#333333;color:orange;
+font-size:15px;font-weight:bold;">
+<div id="frm">
+
+<div class="grid" id="grid1">
+<div class="cr">Course</div>
+<div class="ch">Credit Hour</div>
+<div class="grds">Grades</div>
+</div>
+
+</div>
+
+</div>
+<script>
+var count11;
+var a;
+var cr;
+var gd;
+var cdh;
+var gpa;
+var grid;
+function f2(){
+   
+       if(gpa==1){
+	//   grid=0;
+location.reload(true);
+}
+}
+function f1(){
+gpa=1;
+       
+       count11=document.getElementById("count1").value;
+	   a=document.getElementById("grid1");
+	   if(grid!=1){
+	   grid=1;
+	   if(count11>0){
+	   for(var i=0;i<count11;i++){
+	       cr=document.createElement("div");
+		   cr.style.width="51%";
+		   cr.style.height="40";
+		   cr.style.float="left";
+		   cr.style.backgroundColor="lightgray";
+		   var inp=document.createElement("input");
+		   inp.setAttribute("name","course");
+		   inp.setAttribute("type","text");
+		   inp.style.width="90%";
+		   inp.style.height="30px";
+		   var inputvalue="input"+i;
+		   inp.setAttribute("id",inputvalue);
+		   inp.style.margin="10px 0px 0px 10px";
+		   cr.appendChild(inp);
+		   a.appendChild(cr);
+		   cdh=document.createElement("div");
+		   cdh.style.width="26%";
+		   cdh.style.height="40";
+		   cdh.style.float="left";
+		   cdh.style.backgroundColor="lightgray";
+		   var inpt=document.createElement("input");
+		   inpt.setAttribute("name","credit");
+		   inpt.setAttribute("type","number");
+		   inpt.style.width="90%";
+		   inpt.style.height="30px";
+		   
+		   var inputvalue1="input1"+i;
+		   inpt.setAttribute("id",inputvalue1);
+		   inpt.style.margin="10px 0px 0px 5px";
+		   cdh.appendChild(inpt);
+		   a.appendChild(cdh);
+		   gr=document.createElement("div");
+		   gr.style.width="23%";
+		   gr.style.height="40";
+		   gr.style.float="left";
+		   gr.style.backgroundColor="lightgray";
+		   var sel=document.createElement("select");
+		   var opt1=document.createElement("option");
+		   var opt2=document.createElement("option");
+		   var opt3=document.createElement("option");
+		   var opt4=document.createElement("option");
+		   var opt5=document.createElement("option");
+		   var opt6=document.createElement("option");
+		   var opt7=document.createElement("option");
+		   var opt8=document.createElement("option");
+		   var opt9=document.createElement("option");
+		   var opt10=document.createElement("option");
+		   var txt1=document.createTextNode("A");
+		   var txt2=document.createTextNode("A-");
+		   var txt3=document.createTextNode("B+");
+		   var txt4=document.createTextNode("B");
+		   var txt5=document.createTextNode("B-");
+		   var txt6=document.createTextNode("C+");
+		   var txt7=document.createTextNode("C");
+		   var txt8=document.createTextNode("C-");
+		   var txt9=document.createTextNode("D");
+		   var txt10=document.createTextNode("F");
+		   //var txt7=document.createTextNode("A");
+		   sel.style.margin="10px 0px 0px 13px";
+		   sel.style.width="80%";
+		   sel.style.height="30";
+		   var select1="select"+i;
+		   sel.setAttribute("Id",select1);
+		   opt1.appendChild(txt1);
+		   opt2.appendChild(txt2);
+		   opt3.appendChild(txt3);
+		   opt4.appendChild(txt4);
+		   opt5.appendChild(txt5);
+		   opt6.appendChild(txt6);
+		   opt7.appendChild(txt7);
+		   opt8.appendChild(txt8);
+		   opt9.appendChild(txt9);
+		   opt10.appendChild(txt10);
+		   sel.appendChild(opt1);
+		   sel.appendChild(opt2);
+		   sel.appendChild(opt3);
+		   sel.appendChild(opt4);
+		   sel.appendChild(opt5);
+		   sel.appendChild(opt6);
+		   sel.appendChild(opt7);
+		   sel.appendChild(opt8);
+		   sel.appendChild(opt9);
+		   sel.appendChild(opt10);
+		   gr.appendChild(sel);
+		   a.appendChild(gr);
+	   }
+	   	   if(document.getElementById("count1").value!=""){
+	   		   var inpt=document.createElement("input");
+		   inpt.setAttribute("name","course");
+		   inpt.setAttribute("type","submit");
+		   inpt.setAttribute("value","Calculate Your GPA");
+		   inpt.setAttribute("onclick","calculategpa()");
+		   inpt.style.width="47%";
+		   inpt.style.height="30px";
+		   inpt.style.margin="10px 0px 0px 5px";
+           a.appendChild(inpt);
+		   	   		   var inpt1=document.createElement("input");
+		   inpt1.setAttribute("name","clear");
+		   inpt1.setAttribute("type","submit");
+		   inpt1.setAttribute("value","Clear")
+		   inpt1.style.width="23%";
+		   inpt1.style.height="30px";
+		   inpt1.style.margin="10px 0px 0px 20px";
+		   inpt1.setAttribute("onclick","c()");
+           a.appendChild(inpt1);
+		   
+		   	   		   var inpt2=document.createElement("input");
+		   inpt2.setAttribute("name","gpa");
+		   inpt2.setAttribute("type","text");
+		   inpt2.setAttribute("id","gpavalue");
+		   inpt2.style.width="18.5%";
+		   inpt2.style.height="30px";
+		   inpt2.style.margin="10px 0px 0px 20px";
+           a.appendChild(inpt2);
+		   }
+	   }
+	   else{
+	      alert("Plz Enter Valid Subject No");
+		//  gpa=0;
+         //document.getElementById("count1").value="";
+	   }
+	   }
+	   
+
+}
+function c(){
+	 var v;
+	 var v1;
+	 var v2;
+    for(var i=0;i<count11;i++){
+	v="input"+i;
+	v1="input1"+i;
+	v2="select"+i;
+    var a=document.getElementById(v);
+    var b=document.getElementById(v1);
+    var c=document.getElementById(v2);
+	a.value="";
+	b.value="";
+	c.value="A";
+	}
+	document.getElementById("count1").value="";
+	document.getElementById("gpavalue").value="";
+}
+function calculategpa(){
+    var v
+	 var v1;
+	 var v2;
+	 var gpa;
+	 var credit=0;
+	 var grade=0.00;
+	 var creditcheck;
+    for(var i=0;i<count11;i++){
+	v="input"+i;
+	v1="input1"+i;
+	v2="select"+i;
+    var a=document.getElementById(v).value;
+    var b=Number(document.getElementById(v1).value);
+    var c=document.getElementById(v2).value;
+	
+	if(b!="" && c!=""){
+	   creditcheck=1;
+	}
+	else{
+	  creditcheck=0;
+	  
+	  alert("plz enter valid credit Hours for Credit Hours Field "+(i+1));
+	  return false;
+	}
+	if(b<0 || b>5){
+	  //creditcheck=1;
+	  alert("plz enter valid credit Hours for Credit Hours Field "+(i+1));
+	  document.getElementById("gpavalue").value="";
+	  return false;
+	}
+	
+	<!-- else{ -->
+	   <!-- creditcheck=0; -->
+	<!-- } -->
+	credit=credit+b;
+	if(c=="A"){
+	   c=4.00;
+	}
+	if(c=="A-"){
+	   c=3.70;
+	}
+	if(c=="B+"){
+	   c=3.30;
+	}
+	if(c=="B"){
+	   c=3.00;
+	}
+	if(c=="B-"){
+	   c=2.70;
+	}
+	if(c=="C+"){
+	   c=2.30;
+	}
+	if(c=="C"){
+	   c=2.00;
+	}
+	if(c=="C-"){
+	   c=1.17;
+	}
+	if(c=="D"){
+	   c=1.00;
+	}
+	if(c=="F"){
+	   c=0.00;
+	}
+	grade=grade+c;
+	}
+	gpa=grade/credit;
+	if(creditcheck==1){
+	document.getElementById("gpavalue").value=gpa;
+	}
+	else{
+	  alert("Plz Fill All Fields");
+	}
+	document.getElementById("count1").value="";
+}
+</script>
+</body>
+</html>

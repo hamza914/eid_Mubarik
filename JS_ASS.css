@@ -1,0 +1,99 @@
+*{
+   margin:0px;
+   padding:0px;
+}
+body{
+background-image:url(bg11.jpg);	
+	
+}
+.main_div{
+	height:80%;
+	width:60%;
+	margin:0px auto;
+	margin-top:50px;
+	border:2px solid gray;
+	
+	box-shadow:3px 3px 10px 5px gray;
+}
+.heading{
+	height:80px;
+	width:100%;
+	line-height:80px;
+	font-size:70px;
+	color:#333333;
+	font-weight:bold;
+	margin-left:20px;
+	font-family:serif;
+}
+.login_div{
+	width:100%;
+	height:74.3%;
+}
+.user_login_div{
+	height:100%;
+	width:48%;
+	margin-left:10px;
+	float:left;
+	background-color:white;
+}
+.admin_content{
+	width:94.5%;
+	height:60px;
+	background-color:#333333;
+	line-height:60px;
+	font-size:40px;
+	color:white;
+	font-weight:bold;
+	font-family:serif;
+	padding-left:20px;
+}
+.admin_username_content{
+	width:50%;
+	height:30px;
+	font-size:20px;	
+	color:#333333;
+	font-weight:900;
+	font-family:calibri;
+	margin:20px 0px 0px 25px;
+}
+.admin_username_input{
+	width:80%;
+	height:40px;
+	margin-left:25px;
+	background-image: linear-gradient(#f1f1f1,white);
+	border:1px solid lightgray;
+}
+.admin_password_content{
+	width:50%;
+	height:30px;
+	font-size:20px;	
+	color:#333333;
+	font-weight:bold;
+	font-family:calibri;
+	margin:20px 0px 0px 25px;
+}
+.admin_password_input{
+	width:80%;
+	height:40px;
+	margin-left:25px;
+	background-image: linear-gradient(#f1f1f1,white);
+	border:1px solid lightgray;
+}
+
+
+.login_btn{
+	width:99.5%;
+	height:90px;
+	margin-top:30px;
+	background-color:#333333;
+	border:1px solid #333333;
+	
+}
+.login_btn1{
+	width:100%;
+	height:100%;
+	background-color:#e3e3e3;
+	font-size:20px;	
+	border-radius:5px;
+	
+}

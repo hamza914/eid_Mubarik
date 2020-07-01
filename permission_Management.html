@@ -1,0 +1,200 @@
+<html>
+<head>
+<title>Permission_Management</title>
+<link href="admin.css" type="text/css" rel="stylesheet">
+<link href="user_managemtn.css" type="text/css" rel="stylesheet">
+<link href="role_management.css" type="text/css" rel="stylesheet">
+<script src="SecurityManager.js"></script>
+</head>
+<body class="body">
+<div class="menubar">
+<ul>
+<li><a href="admin.html" >Home</a></li>
+<li><a href="user_managemnt.html">User Management</a></li>
+<li><a href="role_management.html">Role Management</a></li>
+<li><a href="permission_Management.html" style="color:orange;">Permission Management</a></li>
+<li><a href="role_permission_Management.html">Role-Permission Management</a></li>
+<li><a href="user_role_Management.html">User-Role Management</a></li>
+<li><a href="js.html">Logout</a></li>
+</ul>
+</div>
+<div class="main_page1">
+<div class="form1" style="height:80%;">
+<div class="user_managemnt_content" style="height:100px;line-height:45px;">Permission Management</div>
+<form action="permission_Management.html">
+<div class="form_desc1" style="height:57%;margin-top:0px;">
+
+<div class="admin_username_content1">Permission Name:</div>
+<div>
+<input name="admin" type="text" class="admin_username_input" style="margin-top:5px;" required id="permissionid">
+</div>
+
+<div class="admin_username_content1" style="margin-top:30px;">Description:</div>
+<div>
+<input name="admin" type="text" class="admin_username_input" style="margin-top:5px;" required id="descid">
+</div>
+</div>
+<div class="login_div">
+<input name="login" type="submit" class="login_btn1" value="Save" onclick="add2()">
+</div>
+</form>
+</div>
+<div class="grid_view" id="grid">
+<div class="ID"><div style="margin:10px auto;width:20px;">ID</div></div> 
+<div class="Name"><div style="margin:10px 0px 0px 15px;width:20px;">Permission</div></div> 
+<div class="Email"><div style="margin:10px 0px 0px 30px;width:20px;">Description</div></div> 
+<div class="Edit"><div style="margin:10px 0px 0px 25px;width:20px;">Edit</div></div>
+<div class="Delete"><div style="margin:10px 0px 0px 15px;width:20px;">Delete</div></div> 
+
+</div></div>
+<script>
+add_user_in_grid();
+var global=0;
+var check;
+var myid;
+function add_user(){
+debugger
+    var check;
+    var id1;
+	var permission1=document.getElementById("permissionid").value;
+    var description1=document.getElementById("descid").value;  
+	 var carryon=false;
+	 <!-- if(global==1){ -->
+	 <!-- check=false; -->
+	 <!-- } -->
+	 <!-- else{ -->
+	 <!-- check=validateEmail_Login(); -->
+	 <!-- } -->
+	 //if(check==true){
+if(permission1!="" && description1!=""){
+	 //if(carryon==true){
+ if(global==0){ 
+ var _users = [];  
+ _users.push({ID:id1,Permission:permission1,Description:description1});
+ 
+	 SecurityManager.SavePermission(_users);
+	 return true;
+ }
+ else{
+         var record=[];
+		 record=SecurityManager.GetPermissionById(myid);
+		 
+record.Permission=permission1;
+record.Description=description1;
+		 SecurityManager.SavePermission(record);
+		 global=0;		 
+		 return true;
+}
+}
+//}
+//}
+return false;
+}
+function add_user_in_grid(){
+     var record=SecurityManager.GetAllPermissions();
+	 
+	 var id1;
+	 var permission1;
+	 var desc1;
+	 for(var i=0;i<record.length;i++){
+	 id1=record[i].ID;
+	 permission1=record[i].Permission;
+	 desc1=record[i].Description;
+	 
+	 var curr=document.getElementById("grid");
+     var d=document.createElement("div");
+	 var text=document.createTextNode(id1);
+	 d.style.width="42px";
+	 d.style.height="32px";
+	 d.style.float="left";
+	 d.style.font="normal bold 17px arial,serif";
+	 d.style.padding="18px 0px 0px 18px";
+	 d.style.border="1px solid lightgray";
+	 d.style.color="#333333";
+	 d.appendChild(text);
+	 curr.appendChild(d);
+	 var d=document.createElement("div");
+	 var text=document.createTextNode(permission1);
+	 d.style.width="102px";
+	 d.style.height="32px";
+	 d.style.float="left";
+	 d.style.padding="18px 0px 0px 18px";
+	 d.style.border="1px solid lightgray";
+	 d.style.color="#333333";
+	 d.appendChild(text);
+	 curr.appendChild(d);var d=document.createElement("div");
+	 var text=document.createTextNode(desc1);
+	 d.style.width="132px";
+	 d.style.height="32px";
+	 d.style.float="left";
+	 d.style.padding="18px 0px 0px 18px";
+	 d.style.border="1px solid lightgray";
+	 d.style.color="#333333";
+	 d.appendChild(text);
+	 curr.appendChild(d);var d=document.createElement("div");
+	 var text=document.createTextNode("Edit");
+	 
+	 var anchor=document.createElement("a");
+	 //anchor.setAttribute("href","#");
+	 anchor.setAttribute("name",id1);
+	 //anchor.setAttribute("href","user_managemnt.html");
+	 anchor.setAttribute("onclick","f2(this.name)");
+	 anchor.style.cursor="pointer";
+	 d.style.width="58px";
+	 d.style.height="32px";
+	 d.style.float="left";
+	 d.style.color="blue";
+	 d.style.padding="18px 0px 0px 27px";
+	 d.style.border="1px solid lightgray";
+	 d.style.textDecoration="underline";
+	 d.appendChild(text);
+	 anchor.appendChild(d);
+	 curr.appendChild(anchor);
+	 var d=document.createElement("div");
+	 var text=document.createTextNode("Delete");
+	 var anchor=document.createElement("a");
+	 anchor.setAttribute("onclick","f1(this.name)");
+	 anchor.style.cursor="pointer";
+	 anchor.setAttribute("name",id1);
+	 anchor.setAttribute("href","permission_Management.html");
+	 d.style.width="68.5px";
+	 d.style.height="32px";
+	 d.style.float="left";
+	 d.style.color="blue";
+	 d.style.padding="18px 0px 0px 18px";
+	 d.style.border="1px solid lightgray";
+	 d.style.textDecoration="underline";
+	 
+	 anchor.appendChild(text);
+	 d.appendChild(anchor);
+	 curr.appendChild(d);
+	 }
+}
+
+	 function add2(){
+	 if(add_user()){
+	 add_user_in_grid();
+	 }
+	 }
+	  function f1(id11){
+	 if(confirm("Are you Sure?")){
+	 if(SecurityManager.DeletePermission(id11)){
+	 add_user_in_grid();
+	 }
+	 }
+	 }
+	 
+	 function f2(id11){
+	 if(confirm("Do u want to edit...?")){
+	 var record=SecurityManager.GetPermissionById(id11);
+	 var role1=document.getElementById("permissionid");
+	 var desc1=document.getElementById("descid");
+	 role1.value=record.Permission;
+	 desc1.value=record.Description;
+	 global=1;
+	 myid=id11;
+	 }
+	 }
+
+</script>
+</body>

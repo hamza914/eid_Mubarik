@@ -1,0 +1,88 @@
+<html>
+<head>
+<title>js</title>
+
+<link href="JS_ASS.css" type="text/css" rel="stylesheet">
+<script src="SecurityManager.js"></script>
+</head>
+<body>
+<div>
+<div class="main_div">
+<div class="heading">Security Manager</div>
+
+<div class="login_div">
+<div class="user_login_div">
+<div class="admin_content">Login Admin</div>
+<div class="admin_username_content">Username:</div>
+<div>
+<input type="text"  class="admin_username_input" id="usr" required>
+</div>
+
+<div class="admin_password_content">Password:</div>
+<div>
+<input type="password" class="admin_password_input" id="pass" required>
+</div>
+
+<div class="login_btn">
+<div style="margin-top:25px;margin-left:190px;height:40px;width:40%;">
+<form id="frm">
+<input name="login" type="submit" value="Login" class="login_btn1" onclick="f1()">
+</form>
+</div>
+</div>
+</div>
+<div class="user_login_div">
+<form id="form1">
+<div class="admin_content">Login User</div>
+<div class="admin_username_content">Username:</div>
+<div>
+<input type="text" class="admin_username_input" id="user" required>
+</div>
+
+<div class="admin_password_content">Password:</div>
+<div>
+<input type="password" class="admin_password_input" id="passwrd" required>
+</div>
+
+<div class="login_btn">
+<div style="margin-top:25px;margin-left:190px;height:40px;width:40%;">
+<input name="login" type="submit" value="Login" class="login_btn1" onclick="f2()">
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+function f1(){
+var username=document.getElementById("usr").value;
+var password=document.getElementById("pass").value;
+if(username!="" && password!=""){
+if(SecurityManager.ValidateAdmin(username,password)==true){
+       
+	   document.getElementById("frm").setAttribute("action","admin.html");
+}
+else{
+  alert("Invalid Username or Password...!")
+} 
+document.getElementById("usr").value="";
+document.getElementById("pass").value="";
+}
+}
+function f2(){
+var username=document.getElementById("user").value;
+var password=document.getElementById("passwrd").value;
+var record=SecurityManager.GetAllUsers();
+for(var i=0;i<record.length;i++){
+      if(record[i].Login==username && record[i].Password==password){
+	            
+	            document.getElementById("form1").setAttribute("action","user.html");
+	  }
+}
+
+}
+</script>
+</body>
+</html>

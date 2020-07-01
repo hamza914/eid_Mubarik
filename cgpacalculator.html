@@ -1,0 +1,196 @@
+<html>
+<head>
+<title>CGPA_Calculator</title>
+<link href="admin.css" type="text/css" rel="stylesheet">
+<link href="gpacalculator.css" type="text/css" rel="stylesheet">
+</head>
+<body class="body">
+<div class="menubar">
+<ul>
+<li><a href="user.html">Home</a></li>
+<li><a href="gpacalculator.html" >GPA Calculator</a></li>
+<li><a href="cgpacalculator.html" style="color:orange;">CGPA Calculator</a></li>
+<li><a href="js.html">Logout</a></li>
+</ul>
+</div>
+<div class="main_page">
+<div class="wel_content" style="margin-left:150px;">CGPA Calculator</div>
+<div class="wel_content" style="margin-left:150px;font-size:30px;
+magin:0px 0px 0px;">Enter the number of Semesters:</div>
+
+<input name="count" type="number" id="count1" oninput="f2()" required style="height:30px;width:200px;
+margin:5px 0px 0px 150px;">
+<input name="ok" type="submit" value="Okay" id="ok1" onclick="f1()" style="height:28px;width:70px;background-color:#333333;color:orange;
+font-size:15px;font-weight:bold;">
+<div id="frm">
+
+<div class="grid" id="grid1" style="width:30%;">
+<div class="cr">Semesters</div>
+<div class="ch">GPA</div>
+</div>
+
+</div>
+
+</div>
+<script>
+var count11;
+var a;
+var cr;
+var gd;
+var cdh;
+var gpa;
+var grid;
+function f2(){
+   
+       if(gpa==1){
+	//   grid=0;
+location.reload(true);
+}
+}
+function f1(){
+gpa=1;
+       
+       count11=document.getElementById("count1").value;
+	   a=document.getElementById("grid1");
+	   if(grid!=1){
+	   grid=1;
+	   if(count11>0){
+	   for(var i=0;i<count11;i++){
+	       cr=document.createElement("div");
+		   cr.style.width="61%";
+		   cr.style.height="40";
+		   cr.style.float="left";
+		   cr.style.backgroundColor="lightgray";
+		   var inp=document.createElement("input");
+		   inp.setAttribute("name","course");
+		   inp.setAttribute("type","text");
+		   inp.setAttribute("value","Enter Semesters "+(i+1)+" GPA");
+		  // inp.setAttribute("disabled");
+		  inp.disabled=true;
+		   inp.style.width="90%";
+		   inp.style.height="30px";
+		   var inputvalue="input"+i;
+		   inp.setAttribute("id",inputvalue);
+		   inp.style.margin="10px 0px 0px 10px";
+		   cr.appendChild(inp);
+		   a.appendChild(cr);
+		   cdh=document.createElement("div");
+		   cdh.style.width="39%";
+		   cdh.style.height="40";
+		   cdh.style.float="left";
+		   cdh.style.backgroundColor="lightgray";
+		   var inpt=document.createElement("input");
+		   inpt.setAttribute("name","credit");
+		   inpt.setAttribute("type","text");
+		   inpt.style.width="90%";
+		   inpt.style.height="30px";
+		   
+		   var inputvalue1="input1"+i;
+		   inpt.setAttribute("id",inputvalue1);
+		   inpt.style.margin="10px 0px 0px 5px";
+		   cdh.appendChild(inpt);
+		   a.appendChild(cdh);
+	   }
+	   	   if(document.getElementById("count1").value!=""){
+	   		   var inpt=document.createElement("input");
+		   inpt.setAttribute("name","course");
+		   inpt.setAttribute("type","submit");
+		   inpt.setAttribute("value","Calculate Your CGPA");
+		   inpt.setAttribute("onclick","calculategpa()");
+		   inpt.style.width="47%";
+		   inpt.style.height="30px";
+		   inpt.style.margin="10px 0px 0px 5px";
+           a.appendChild(inpt);
+		   	   		   var inpt1=document.createElement("input");
+		   inpt1.setAttribute("name","clear");
+		   inpt1.setAttribute("type","submit");
+		   inpt1.setAttribute("value","Clear")
+		   inpt1.style.width="23%";
+		   inpt1.style.height="30px";
+		   inpt1.style.margin="10px 0px 0px 10px";
+		   inpt1.setAttribute("onclick","c()");
+           a.appendChild(inpt1);
+		   
+		   	   		   var inpt2=document.createElement("input");
+		   inpt2.setAttribute("name","gpa");
+		   inpt2.setAttribute("type","text");
+		   inpt2.setAttribute("id","gpavalue");
+		   inpt2.style.width="20.3%";
+		   inpt2.style.height="30px";
+		   inpt2.style.margin="10px 0px 0px 10px";
+           a.appendChild(inpt2);
+		   }
+	   }
+	   else{
+	      alert("Plz Enter Valid Subject No");
+		//  gpa=0;
+         //document.getElementById("count1").value="";
+	   }
+	   }
+	   
+
+}
+function c(){
+	 var v;
+	 var v1;
+	 var v2;
+    for(var i=0;i<count11;i++){
+	v="input"+i;
+	v1="input1"+i;
+    var a=document.getElementById(v);
+    var b=document.getElementById(v1);
+	//a.value="";
+	b.value="";
+	}
+	document.getElementById("count1").value="";
+	document.getElementById("gpavalue").value="";
+}
+function calculategpa(){
+    var v
+	 var v1;
+	 var v2;
+	 var gpa;
+	 var credit=0;
+	 var grade=0.00;
+	 var creditcheck;
+    for(var i=0;i<count11;i++){
+	//v="input"+i;
+	v1="input1"+i;
+	//var a=document.getElementById(v).value;
+    var b=(document.getElementById(v1).value);
+    
+	if(b!=""){
+	   creditcheck=1;
+	}
+	else{
+	  creditcheck=0;
+	  
+	  alert("plz enter valid credit Hours for Credit Hours Field "+(i+1));
+	  return false;
+	}
+	if(b<0 || b>4 || b>='a' && b<='z' || b>='A' && b<='Z'){
+	  //creditcheck=1;
+	  alert("plz enter valid GPA for Field "+(i+1));
+	  document.getElementById("gpavalue").value="";
+	  return false;
+	}
+	if(b>0){
+	  b=Number(b);
+	}
+	<!-- else{ -->
+	   <!-- creditcheck=0; -->
+	<!-- } -->
+	credit=credit+b;
+	}
+	gpa=credit/count11;
+	if(creditcheck==1){
+	document.getElementById("gpavalue").value=gpa;
+	}
+	else{
+	  alert("Plz Fill All Fields");
+	}
+	document.getElementById("count1").value="";
+}
+</script>
+</body>
+</html>

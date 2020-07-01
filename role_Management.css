@@ -1,0 +1,125 @@
+
+.main_page1{
+	width:100%;
+	height:80%;
+	margin-top:3.4%;
+	float:left;
+}
+.form1{
+	width:25%;
+	height:77%;
+	margin:58px 0px 0px 260px;
+	border:1px solid lightgray;
+	background-color:white;
+	box-shadow:3px 3px 10px 5px gray;
+	float:left;
+	border:1px solid lightgray;
+}
+.user_managemnt_content{
+	width:93.8%;
+	height:65px;
+	background-color:#333333;
+	font-size:35px;
+	font-family:serif;
+	font-weight:bold;
+	color:white;
+	line-height:65px;
+	padding-left:20px;
+}
+.form_desc1{
+	width:99.7%;
+	height:65%;
+	border:1px solid white;
+}
+.login_div{
+	width:100%;
+	height:64px;
+	border:1px solid #333333;
+	margin-top:0px;
+	background-color:#333333;
+}
+
+.admin_username_content1{
+	width:50%;
+	height:30px;
+	font-size:20px;	
+	color:#333333;
+	font-weight:normal;
+	font-family:calibri;
+	margin:20px 0px 0px 25px;
+}
+.admin_username_input{
+	width:80%;
+	height:30px;
+	margin-left:25px;
+	margin-top:20px;
+	background-image: linear-gradient(#f1f1f1,white);
+	border:1px solid lightgray;
+}
+
+.login_btn1{
+	width:25%;
+	height:55%;
+	background-color:#e3e3e3;
+	font-size:20px;
+margin:15px 0px 0px 220px;	
+	border-radius:5px;
+	
+}
+.grid_view{
+	width:40%;
+	float:left;
+	margin:100px 0px 0px 80px;
+	
+	box-shadow:3px 3px 10px 5px gray;
+	background-color:white;
+}
+.grid_view div{
+}
+.ID{
+	width:60px;
+	height:50px;
+	float:left;
+	color:#333333;
+	font-size:20px;
+	font-weight:bold;
+	
+	border:1px solid lightgray;
+}
+.Name{
+	width:120px;
+	height:50px;
+	float:left;
+	color:#333333;
+	font-size:20px;
+	font-weight:bold;
+	border:1px solid lightgray;
+}
+.Email{
+	width:150px;
+	height:50px;
+	float:left;
+	color:#333333;
+	font-size:20px;
+	font-weight:bold;
+	border:1px solid lightgray;
+}
+.Delete{
+	width:86.6px;
+	height:50px;
+	float:left;
+	color:#333333;
+	font-size:20px;
+	font-weight:bold;
+	border:1px solid lightgray;
+}
+
+.Edit{
+	width:85px;
+	height:50px;
+	float:left;
+	color:#333333;
+	font-size:20px;
+	font-weight:bold;
+	border:1px solid lightgray;
+}

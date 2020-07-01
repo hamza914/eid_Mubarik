@@ -1,0 +1,38 @@
+*{
+   padding:0px;
+   margin:0px;
+}
+.grid{
+	width:36.6%;
+	height:62px;
+	margin:10px 0px 0px 150px;
+	background-color:lightgray;
+}
+.cr{
+	width:156px;
+	height:60px;
+	float:left;
+	font-size:20px;
+	font-weight:bold;
+	padding-left:80px;
+	line-height:60px;
+	
+}
+.ch{
+	width:90px;
+	height:50px;
+	float:left;
+	font-size:20px;
+	font-weight:bold;
+	padding-left:30px;
+	padding-top:10px;
+}
+.grds{
+	width:80px;
+	height:60px;
+	float:left;
+	font-size:20px;
+	font-weight:bold;
+	padding-left:20px;
+	line-height:60px;
+}

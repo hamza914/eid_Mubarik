@@ -1,0 +1,227 @@
+<html>
+<head>
+<title>Role_Permission_Management</title>
+<link href="admin.css" type="text/css" rel="stylesheet">
+<link href="user_managemtn.css" type="text/css" rel="stylesheet">
+<link href="role_management.css" type="text/css" rel="stylesheet">
+<script src="SecurityManager.js"></script>
+</head>
+<body class="body">
+<div class="menubar">
+<ul>
+<li><a href="admin.html" >Home</a></li>
+<li><a href="user_managemnt.html">User Management</a></li>
+<li><a href="role_management.html">Role Management</a></li>
+<li><a href="permission_Management.html">Permission Management</a></li>
+<li><a href="role_permission_Management.html" style="color:orange;">Role-Permission Management</a></li>
+<li><a href="user_role_Management.html">User-Role Management</a></li>
+<li><a href="js.html">Logout</a></li>
+</ul>
+</div>
+<div class="main_page1">
+<div class="form1" style="height:80%;">
+<div class="user_managemnt_content" style="height:100px;line-height:45px;">Role-Permission Management</div>
+<form action="role_permission_Management.html">
+<div class="form_desc1" style="height:57%;margin-top:0px;">
+
+
+<div class="admin_username_content" style="margin-top:30px;">Role:</div>
+<div>
+<select id="roleSelect" class="admin_username_input" name="Role" style="margin-top:5px;" required onchange="a()" >
+<option name="countries" value="" disabled selected="selected">Select</option>
+<select>
+</div>
+<div class="admin_username_content" style="margin-top:30px;">Permission:</div>
+<div>
+<select id="permissionSelect" class="admin_username_input" name="Permission" style="margin-top:5px;" required>
+<option name="cities" value="" disabled selected="selected">
+Select
+</option>
+</select>
+</div>
+
+
+</div>
+<div class="login_div">
+<input name="login" type="submit" class="login_btn1" value="Save" onclick="add2()">
+</div>
+</form>
+</div>
+<div class="grid_view" id="grid">
+<div class="ID"><div style="margin:10px auto;width:20px;">ID</div></div> 
+<div class="Name"><div style="margin:10px 0px 0px 35px;width:20px;">Role</div></div> 
+<div class="Email"><div style="margin:10px 0px 0px 30px;width:20px;">Permission</div></div> 
+<div class="Edit"><div style="margin:10px 0px 0px 25px;width:20px;">Edit</div></div>
+<div class="Delete"><div style="margin:10px 0px 0px 15px;width:20px;">Delete</div></div> 
+
+</div></div>
+<script>
+rolepermission();
+function rolepermission(){
+var roles=SecurityManager.GetAllRoles();
+var permissions=SecurityManager.GetAllPermissions();
+for(var i=0;i<roles.length;i++){
+
+var x = document.getElementById("roleSelect");
+  var option = document.createElement("option");
+  option.text = roles[i].Role;
+  x.add(option);
+}
+for(var i=0;i<permissions.length;i++){
+
+var x = document.getElementById("permissionSelect");
+  var option = document.createElement("option");
+  option.text = permissions[i].Permission;
+  x.add(option);
+}
+}
+add_user_in_grid();
+var global=0;
+var check;
+var myid;
+function add_user(){
+debugger
+    var check;
+    var id1;
+	var permission1=document.getElementById("permissionSelect").value;
+    var role1=document.getElementById("roleSelect").value;  
+	 var carryon=false;
+	 <!-- if(global==1){ -->
+	 <!-- check=false; -->
+	 <!-- } -->
+	 <!-- else{ -->
+	 <!-- check=validateEmail_Login(); -->
+	 <!-- } -->
+	 //if(check==true){
+if(permission1!="" && role1!=""){
+	 //if(carryon==true){
+ if(global==0){ 
+ var _users = [];  
+ _users.push({ID:id1,Role:role1,Permission:permission1});
+ 
+	 SecurityManager.SaveRolePermission(_users);
+	 return true;
+ }
+ else{
+         var record=[];
+		 record=SecurityManager.GetRolePermissionById(myid);
+		 
+record.Role=role1;
+record.Permission=permission1;
+		 SecurityManager.SaveRolePermission(record);
+		 global=0;		 
+		 return true;
+}
+}
+//}
+//}
+return false;
+}
+function add_user_in_grid(){
+     var record=SecurityManager.GetAllRolePermissions();
+	 
+	 var id1;
+	 var permission1;
+	 var role1;
+	 for(var i=0;i<record.length;i++){
+	 id1=record[i].ID;
+	 permission1=record[i].Permission;
+	 role1=record[i].Role;
+	 
+	 var curr=document.getElementById("grid");
+     var d=document.createElement("div");
+	 var text=document.createTextNode(id1);
+	 d.style.width="42px";
+	 d.style.height="32px";
+	 d.style.float="left";
+	 d.style.font="normal bold 17px arial,serif";
+	 d.style.padding="18px 0px 0px 18px";
+	 d.style.border="1px solid lightgray";
+	 d.style.color="#333333";
+	 d.appendChild(text);
+	 curr.appendChild(d);
+	 var d=document.createElement("div");
+	 var text=document.createTextNode(role1);
+	 d.style.width="102px";
+	 d.style.height="32px";
+	 d.style.float="left";
+	 d.style.padding="18px 0px 0px 18px";
+	 d.style.border="1px solid lightgray";
+	 d.style.color="#333333";
+	 d.appendChild(text);
+	 curr.appendChild(d);var d=document.createElement("div");
+	 var text=document.createTextNode(permission1);
+	 d.style.width="132px";
+	 d.style.height="32px";
+	 d.style.float="left";
+	 d.style.padding="18px 0px 0px 18px";
+	 d.style.border="1px solid lightgray";
+	 d.style.color="#333333";
+	 d.appendChild(text);
+	 curr.appendChild(d);var d=document.createElement("div");
+	 var text=document.createTextNode("Edit");
+	 
+	 var anchor=document.createElement("a");
+	 //anchor.setAttribute("href","#");
+	 anchor.setAttribute("name",id1);
+	 //anchor.setAttribute("href","user_managemnt.html");
+	 anchor.setAttribute("onclick","f2(this.name)");
+	 anchor.style.cursor="pointer";
+	 d.style.width="58px";
+	 d.style.height="32px";
+	 d.style.float="left";
+	 d.style.color="blue";
+	 d.style.padding="18px 0px 0px 27px";
+	 d.style.border="1px solid lightgray";
+	 d.style.textDecoration="underline";
+	 d.appendChild(text);
+	 anchor.appendChild(d);
+	 curr.appendChild(anchor);
+	 var d=document.createElement("div");
+	 var text=document.createTextNode("Delete");
+	 var anchor=document.createElement("a");
+	 anchor.setAttribute("onclick","f1(this.name)");
+	 anchor.style.cursor="pointer";
+	 anchor.setAttribute("name",id1);
+	 anchor.setAttribute("href","role_permission_Management.html");
+	 d.style.width="68.5px";
+	 d.style.height="32px";
+	 d.style.float="left";
+	 d.style.color="blue";
+	 d.style.padding="18px 0px 0px 18px";
+	 d.style.border="1px solid lightgray";
+	 d.style.textDecoration="underline";
+	 
+	 anchor.appendChild(text);
+	 d.appendChild(anchor);
+	 curr.appendChild(d);
+	 }
+}
+
+	 function add2(){
+	 if(add_user()){
+	 add_user_in_grid();
+	 }
+	 }
+	  function f1(id11){
+	 if(confirm("Are you Sure?")){
+	 if(SecurityManager.DeleteRolePermission(id11)){
+	 add_user_in_grid();
+	 }
+	 }
+	 }
+	 
+	 function f2(id11){
+	 if(confirm("Do u want to edit...?")){
+	 var record=SecurityManager.GetRolePermissionById(id11);
+	 var role1=document.getElementById("roleSelect");
+	 var permission1=document.getElementById("permissionSelect");
+	 role1.value=record.Role;
+	 permission1.value=record.Permission;
+	 global=1;
+	 myid=id11;
+	 }
+	 }
+
+</script>
+</body>
